@@ -51,19 +51,19 @@ export default function App() {
 
   const handleAction = async (type, itemId, name, email, menge, kommentar) => {
     const res = await fetch(`${API_BASE}?action=addTransaction`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        "Item ID": itemId,
-        "Name": name,
-        "Email": email,
-        "Anzahl": menge,
-        "Typ": type,
-        "Kommentar": kommentar
-      })
-    });
-    const result = await res.text();
-    alert(result);
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    "Item ID": itemId,
+    "Name": name,
+    "Email": email,
+    "Anzahl": menge,
+    "Typ": type,
+    "Kommentar": kommentar
+  })
+});
+const result = await res.text();
+alert(result);
   };
 
   const filteredItems = inventory.filter(item =>
