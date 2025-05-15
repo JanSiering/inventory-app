@@ -9,7 +9,11 @@ export default defineConfig({
       '@/components': path.resolve(__dirname, './src/components'),
     },
   },
-  server: {
-    allowedHosts: ['.csb.app'], // 👈 das erlaubt alle Codesandbox-Hosts
+server: {
+  host: true,
+  strictPort: false,
+  watch: {
+    usePolling: true,
   },
-});
+  allowedHosts: 'all', // 👈 das ist der wichtige Teil!
+}
