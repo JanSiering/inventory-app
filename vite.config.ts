@@ -9,11 +9,12 @@ export default defineConfig({
       '@/components': path.resolve(__dirname, './src/components'),
     },
   },
-server: {
-  host: true,
-  strictPort: false,
-  watch: {
-    usePolling: true,
+  server: {
+    host: true,
+    strictPort: false,
+    watch: {
+      usePolling: true,
+    },
+    allowedHosts: 'all',
   },
-  allowedHosts: 'all', // 👈 das ist der wichtige Teil!
-}
+});
