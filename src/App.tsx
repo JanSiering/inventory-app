@@ -1,4 +1,3 @@
-// Live-Web-App mit Google Sheets-Anbindung + QR-Code Scan + Formular-Write
 import { useEffect, useState, useRef } from 'react';
 import { Html5QrcodeScanner } from "html5-qrcode";
 
@@ -13,7 +12,7 @@ export default function App() {
   const API_BASE = "https://script.google.com/macros/s/AKfycbxHT_QN-RIvL3QRHamBZjgO3XCDeAmXJwGGtZV20ZV04kXAU2pPEjIpvP59HPik3zLJ/exec";
 
   useEffect(() => {
-    fetch(`${API_BASE}?action=getInventory\`)
+    fetch(`${API_BASE}?action=getInventory`)
       .then(res => {
         if (!res.ok) throw new Error("Fehler beim Laden der Daten");
         return res.json();
@@ -51,19 +50,19 @@ export default function App() {
 
   const handleAction = async (type, itemId, name, email, menge, kommentar) => {
     const res = await fetch(`${API_BASE}?action=addTransaction`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    "Item ID": itemId,
-    "Name": name,
-    "Email": email,
-    "Anzahl": menge,
-    "Typ": type,
-    "Kommentar": kommentar
-  })
-});
-const result = await res.text();
-alert(result);
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        "Item ID": itemId,
+        "Name": name,
+        "Email": email,
+        "Anzahl": menge,
+        "Typ": type,
+        "Kommentar": kommentar
+      })
+    });
+    const result = await res.text();
+    alert(result);
   };
 
   const filteredItems = inventory.filter(item =>
