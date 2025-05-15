@@ -50,7 +50,7 @@ export default function App() {
   };
 
   const handleAction = async (type, itemId, name, email, menge, kommentar) => {
-    const res = await fetch(`${API_BASE}?action=addTransaction\`, {
+    const res = await fetch(`${API_BASE}?action=addTransaction`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
